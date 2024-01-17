@@ -3,10 +3,14 @@ const app = express();
 
 const connect = require('./db/conn');
 
+const users = require('./routes/users')
 
 require('dotenv').config({path: '.env'})
-const PORT = 8000;
+const PORT = process.env.PORT;
 
+
+app.use(express.json());
+app.use('/api/v1/user',users);
 
 const connection =  async () => {
     try {
